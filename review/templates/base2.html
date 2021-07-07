@@ -23,7 +23,7 @@
         rel="stylesheet" />
 
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/one-page-wonder.min.css' %}" rel="stylesheet" />
 
     <!-- My Style -->
     <link href="{% static 'css/mystyle.css' %}" type="text/css" rel="stylesheet">
@@ -37,9 +37,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
             <div class="container px-5">
                 <a class="navbar-brand" href="{% url 'review:index' %}">BOOK REVIEW</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         {% if user.is_authenticated %}
@@ -69,7 +69,7 @@
         <!-- Footer-->
         <footer class="py-3 bg-black">
             <div class="container px-5">
-                <p class="m-0 text-center text-white small">Copyright &copy; Website 2021</p>
+                <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2021</p>
             </div>
         </footer>
 
