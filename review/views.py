@@ -11,6 +11,12 @@ from review import models
 class IndexView(generic.TemplateView):
     template_name = 'index.html'
 
+
 class ReviewListView(LoginRequiredMixin, generic.ListView):
     model = Reiview
     template_name = 'review_list.html'
+    paginate_by = 3
+
+    def get_queryset(self):
+        reviews = Reiview.objects.order_by('-created_at')
+        return reviews
