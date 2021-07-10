@@ -20,7 +20,7 @@
                 </div>
                 {% for review in review_list %}
                 <div class="post-preview">
-                    <a href="#">
+                    <a href="{{ url 'review:review_detail' review.pk }}">
                         <h2 class="post-title">
                             {{ review.title }}
                         </h2>
