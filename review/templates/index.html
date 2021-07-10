@@ -13,7 +13,11 @@
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">Book Review</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">本のレビューサイト</h2>
-                        <a class="btn btn-primary" href="{% url 'account_login' %}">はじめる</a>
+                        {% if user.is_authenticated %}
+                        <a class="btn btn-primary" href="{% url 'account_login' %}">レビュー</a>
+                        {% else %}
+                        <a class="btn btn-primary" href="{% url 'account_login' %}">ログイン</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

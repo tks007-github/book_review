@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 
-EVALUATION_CHOICES = [('Good', 'Good'), ('Bad', 'Bad')]
+EVALUATION_CHOICES = [('良い', '良い'), ('悪い', '悪い')]
 class Reiview(models.Model):
     """レビューモデル"""
 

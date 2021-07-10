@@ -11,3 +11,7 @@ footer {
 .my-div-style {
     margin-top: 6rem;
 }
+
+.my-div-style w-100 {
+    margin-top: 6rem;
+}
