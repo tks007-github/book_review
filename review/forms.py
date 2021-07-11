@@ -1,7 +1,7 @@
 from django import forms
 from django.core.mail import EmailMessage, message
 from django.forms import fields
-from .models import Reiview
+from .models import Review
 
 class InquiryForm(forms.Form):
     name = forms.CharField(label='お名前', max_length=30)
@@ -46,8 +46,8 @@ class InquiryForm(forms.Form):
 
 class ReviewCreateForm(forms.ModelForm):
     class Meta:
-        model = Reiview
-        fields = ('title', 'photo', 'content', 'useful_review_record')
+        model = Review
+        fields = ('title', 'photo', 'content', 'useful_review_record', 'evaluation')
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

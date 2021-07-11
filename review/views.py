@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Reiview
+from .models import Review
 from review import models
 
 # Create your views here.
@@ -19,20 +19,20 @@ class InquiryView(generic.FormView):
     form_class = InquiryForm
 
 class ReviewListView(LoginRequiredMixin, generic.ListView):
-    model = Reiview
+    model = Review
     template_name = 'review_list.html'
     paginate_by = 3
 
     def get_queryset(self):
-        reviews = Reiview.objects.filter(user=self.request.user).order_by('-created_at')
+        reviews = Review.objects.filter(user=self.request.user).order_by('-created_at')
         return reviews
 
 class ReviewDetailView(LoginRequiredMixin, generic.DeleteView):
-    model = Reiview
+    model = Review
     template_name = 'review_detail.html'
 
 class ReviewCreateView(LoginRequiredMixin, generic.CreateView):
-    model = Reiview
+    model = Review
     template_name = 'review_create.html'
     form_class = ReviewCreateForm
     success_url = reverse_lazy('review:review_list')
@@ -47,3 +47,28 @@ class ReviewCreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         messages.error(self.request, 'レビューの作成に失敗しました。')
         return super().form_invalid(form)
+
+class ReviewUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Review
+    template_name = 'review_update.html'
+    form_class = ReviewCreateForm
+
+    def get_success_url(self):
+        return reverse_lazy('review:review_detail', kwargs={'pk': self.kwargs['pk']})
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'レビューを更新しました。')
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        messages.error(self.request, 'レビューの更新に失敗しました。')
+        return super().form_invalid(form)
+
+class ReviewDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Review
+    template_name = 'review_delete.html'
+    seccess_url = reverse_lazy('review:review_list')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'レビューを削除しました。')
+        return super().delete(request, *args, **kwargs)

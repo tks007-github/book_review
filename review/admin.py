@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Reiview
+from .models import Review
 
 # Register your models here.
-admin.site.register(Reiview)
+admin.site.register(Review)
