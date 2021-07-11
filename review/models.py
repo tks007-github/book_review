@@ -12,7 +12,7 @@ class Review(models.Model):
     content = models.TextField(verbose_name='内容')
     photo = models.ImageField(verbose_name='写真', blank=True, null=True)
     useful_review = models.IntegerField(verbose_name='いいね', null=True, blank=True, default=0)
-    useful_review_record = models.TextField(verbose_name='講評')
+    review = models.TextField(verbose_name='講評')
     evaluation = models.CharField(verbose_name='評価', max_length=10, choices=EVALUATION_CHOICES)
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)

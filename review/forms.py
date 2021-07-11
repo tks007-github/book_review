@@ -47,7 +47,7 @@ class InquiryForm(forms.Form):
 class ReviewCreateForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ('title', 'photo', 'content', 'useful_review_record', 'evaluation')
+        fields = ('title', 'photo', 'content', 'review', 'evaluation')
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
