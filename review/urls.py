@@ -2,6 +2,7 @@ from django.urls import path
 from django.urls.resolvers import URLPattern
 
 from .import views
+from .views import evaluationview
 
 app_name = 'review'
 urlpatterns = [
@@ -12,4 +13,5 @@ urlpatterns = [
     path('review-create/', views.ReviewCreateView.as_view(), name='review_create'),
     path('review-update/<int:pk>/', views.ReviewUpdateView.as_view(), name='review_update'),
     path('review-delete/<int:pk>/', views.ReviewDeleteView.as_view(), name='review_delete'),
+    path('evaluation/<int:pk>', evaluationview, name='evaluation'),
 ]

@@ -38,7 +38,7 @@
                 <strong>内容</strong>
             </div>
             <div class="col-9">
-                {{ object.content|linebreaksbr }}
+                {{ object.content }}
             </div>
         </div>
 
@@ -49,7 +49,29 @@
                 <strong>講評</strong>
             </div>
             <div class="col-9">
-                {{ object.review|linebreaksbr }}
+                {{ object.review }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>投稿者</strong>
+            </div>
+            <div class="col-9">
+                {{ object.user }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>いいね</strong>
+            </div>
+            <div class="col-9">
+                {{ object.useful_review }}
             </div>
         </div>
 
@@ -82,6 +104,10 @@
 
         <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'review:review_delete' object.pk %}">
             削除
+        </a>
+        {% else %}
+        <a class="btn btn-success mt-5 mb-3" href="{% url 'review:evaluation' object.pk %}">
+            いいね
         </a>
         {% endif %}
 

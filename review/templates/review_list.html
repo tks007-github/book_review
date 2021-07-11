@@ -23,13 +23,19 @@
                 {% for review in review_list %}
                 <div class="post-preview">
                     <a href="{% url 'review:review_detail' review.pk %}">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             {{ review.title }}
-                        </h2>
-                        <h3 class="post-subtitle">
-                            {{ review.evaluation|truncatechars:20 }}
                         </h3>
                     </a>
+                        <h5 class="post-subtitle">
+                            評価：{{ review.evaluation|truncatechars:20 }}
+                        </h5>
+                        <h5 class="post-subtitle">
+                            いいね：{{ review.useful_review|truncatechars:20 }}
+                        </h5>
+                        <h5 class="post-subtitle">
+                            投稿者：{{ review.user|truncatechars:20 }}
+                        </h5>
                     <p class="post-meta">{{ review.created_at }}</p>
                 </div>
                 <hr>

@@ -1,5 +1,5 @@
 from django import forms
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import generic
 from .forms import InquiryForm, ReviewCreateForm
 import logging
@@ -82,3 +82,16 @@ class ReviewDeleteView(LoginRequiredMixin, generic.DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'レビューを削除しました。')
         return super().delete(request, *args, **kwargs)
+
+
+def evaluationview(request, pk):
+    post = Review.objects.get(pk=pk)
+    user = request.user
+    if user in post.useful_review_record:
+        return redirect('review_list')
+    else:
+        post.useful_review = post.useful_review + 1
+        post.useful_review_record = post.useful_review_record + user
+
+        post.save()
+        return redirect('review_detail')
