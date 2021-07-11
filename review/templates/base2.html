@@ -43,7 +43,13 @@
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'review:inquiry' %}">問合せ</a>
+                        </li>
                         {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'review:review_list' %}">レビュー</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
                         </li>
@@ -52,12 +58,9 @@
                             <a class="nav-link" href="{% url 'account_signup' %}">新規登録</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">ログイン</a>
+                            <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
                         </li>
                         {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'review:inquiry' %}">問合せ</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -80,7 +83,7 @@
             </div>
         </div>
         {% endif %}
-        
+
         {% block contents %}{% endblock %}
 
         <!-- Footer-->

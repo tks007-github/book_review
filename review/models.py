@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 
-EVALUATION_CHOICES = [('良い', '良い'), ('悪い', '悪い')]
+EVALUATION_CHOICES = [('☆☆☆', '☆☆☆：良い'), ('☆☆', '☆☆　：普通'), ('☆', '☆　　：悪い')]
 class Review(models.Model):
     """レビューモデル"""
 

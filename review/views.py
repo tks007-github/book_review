@@ -53,7 +53,7 @@ class ReviewCreateView(LoginRequiredMixin, generic.CreateView):
         messages.success(self.request, 'レビューを作成しました。')
         return super().form_valid(form)
     
-    def form_valid(self, form):
+    def form_invalid(self, form):
         messages.error(self.request, 'レビューの作成に失敗しました。')
         return super().form_invalid(form)
 
@@ -76,7 +76,7 @@ class ReviewUpdateView(LoginRequiredMixin, generic.UpdateView):
 class ReviewDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Review
     template_name = 'review_delete.html'
-    seccess_url = reverse_lazy('review:review_list')
+    success_url = reverse_lazy('review:review_list')
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'レビューを削除しました。')
