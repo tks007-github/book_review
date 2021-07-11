@@ -14,7 +14,7 @@
                         <h1 class="mx-auto my-0 text-uppercase">Book Review</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">本のレビューサイト</h2>
                         {% if user.is_authenticated %}
-                        <a class="btn btn-primary" href="{% url 'account_login' %}">マイレビュー</a>
+                        <a class="btn btn-primary" href="{% url 'review:review_list' %}">マイレビュー</a>
                         {% else %}
                         <a class="btn btn-primary" href="{% url 'account_login' %}">ログイン</a>
                         {% endif %}
@@ -33,6 +33,7 @@
                     <div class="col-lg-8">
                         <h2 class="text-white mb-4">みんなへ</h2>
                         <p class="text-white-50">
+                            利用していただきありがとうございます。<br>
                             不具合等お気づきの点があればLINEにて報告をお願いします。
                         </p>
                     </div>

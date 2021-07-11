@@ -185,7 +185,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
-    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
     # 一般ユーザー用(メールアドレス認証)
     'django.contrib.auth.backends.ModelBackend',
     # 管理サイト用(ユーザー名認証)
@@ -200,8 +200,8 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
 """
 # ログイン/ログアウト後の遷移先を設定
-LOGIN_REDIRECT_URL = 'review:review_list'
-ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+LOGIN_REDIRECT_URL = 'review:index'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'review:index'
 
 # ログアウトリンクのクリック一発でログアウトする設定
 ACCOUNT_LOGOUT_ON_GET = True
