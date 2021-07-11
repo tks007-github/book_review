@@ -38,7 +38,7 @@
                 <strong>内容</strong>
             </div>
             <div class="col-9">
-                {{ object.content|linebreksbr }}
+                {{ object.content|linebreaksbr }}
             </div>
         </div>
 
@@ -49,7 +49,7 @@
                 <strong>講評</strong>
             </div>
             <div class="col-9">
-                {{ object.useful_review_record|linebreksbr }}
+                {{ object.useful_review_record|linebreaksbr }}
             </div>
         </div>
 
@@ -79,7 +79,7 @@
             編集
         </a>
 
-        <a class="btn btn-success mt-5 ml-2 mb-3" href="{% url 'review:review_delete' object.pk %}">
+        <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'review:review_delete' object.pk %}">
             削除
         </a>
 
