@@ -33,7 +33,8 @@ class ReviewListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        reviews = Review.objects.filter(user=self.request.user).order_by('-created_at')
+        # reviews = Review.objects.filter(user=self.request.user).order_by('-created_at')
+        reviews = Review.objects.order_by('-created_at')
         return reviews
 
 class ReviewDetailView(LoginRequiredMixin, generic.DeleteView):
