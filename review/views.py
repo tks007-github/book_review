@@ -10,6 +10,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Review
 from review import models
 
+logger = logging.getLogger(__name__)
+
 # Create your views here.
 class IndexView(generic.TemplateView):
     template_name = 'index.html'
@@ -17,6 +19,13 @@ class IndexView(generic.TemplateView):
 class InquiryView(generic.FormView):
     template_name = 'inquiry.html'
     form_class = InquiryForm
+    success_url = reverse_lazy('review:inquiry')
+
+    def form_valid(self, form):
+        form.send_email()
+        messages.success(self.request, 'メッセージを送信しました。')
+        logger.info('Inquiry sent by {}'.format(form.cleane_data['name']))
+        return super().form_valid(form)
 
 class ReviewListView(LoginRequiredMixin, generic.ListView):
     model = Review
