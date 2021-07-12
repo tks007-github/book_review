@@ -86,12 +86,13 @@ class ReviewDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 def evaluationview(request, pk):
     post = Review.objects.get(pk=pk)
-    user = request.user
+    user = str(request.user)
+
     if user in post.useful_review_record:
-        return redirect('review_list')
+        return redirect('review:review_list')
     else:
         post.useful_review = post.useful_review + 1
         post.useful_review_record = post.useful_review_record + user
 
         post.save()
-        return redirect('review_detail')
+        return redirect('review:review_list')
