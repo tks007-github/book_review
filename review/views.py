@@ -30,7 +30,7 @@ class InquiryView(generic.FormView):
 class ReviewListView(LoginRequiredMixin, generic.ListView):
     model = Review
     template_name = 'review_list.html'
-    paginate_by = 3
+    paginate_by = 5
 
     def get_queryset(self):
         # reviews = Review.objects.filter(user=self.request.user).order_by('-created_at')
